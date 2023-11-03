@@ -1,37 +1,24 @@
-import { Button, Image, Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
-import { Link } from 'expo-router';
-import { useState } from 'react';
+import React, { useState } from 'react';
+import { View, Text, TextInput, StyleSheet, Pressable, Image } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import ConfirmButton from '../components/ConfirmButton';
 
 const logo = require('../images/site-logo.png');
 
-export default function Page() {
-
+const LoginPage = () => {
+  const navigation = useNavigation();
   const [email, setEmail] = useState('usuario@example.com');
   const [password, setPassword] = useState('senha123');
+  const [invalidAccess, setInvalidAccess] = useState(false);
 
-  function validarCredenciais(email, senha) {
-    return new Promise((resolve, reject) => {
-      // Simular validação de credenciais (substitua esta lógica pela chamada real da API)
-      if (email === 'usuario@example.com' && senha === 'senha123') {
-        resolve(true); // Credenciais válidas
-      } else {
-        reject(new Error('Credenciais inválidas'));
-      }
-    });
+  async function validarCredenciais() {
+    if (email === 'usuario@example.com' && password === 'senha123') {
+      navigation.navigate('Tools');
+    } else {
+      console.log('Credenciais inválidas');
+      setInvalidAccess(true);
+    }
   };
-
-  async function handleSubmit() {
-  try {
-    await validarCredenciais(email, password);
-    // Credenciais válidas, redirecione para '/tools'
-    // Certifique-se de que '/tools' esteja configurado em seu aplicativo
-    Link.open('/tools');
-  } catch (error) {
-    // Credenciais inválidas, exiba uma mensagem de erro ao usuário
-    console.error('Credenciais inválidas', error);
-    // Você pode atualizar o estado para mostrar uma mensagem de erro ao usuário
-  }
-}
 
   return (
     <View style={styles.pageContainer}>
@@ -48,43 +35,43 @@ export default function Page() {
         />
         <TextInput
           name='password'
-          placeholder="senha"
-          secureTextEntry={true} // Isso oculta o texto inserido
+          placeholder='senha'
+          secureTextEntry={true}
           onChangeText={text => setPassword(text)}
           value={password}
           style={styles.loginInput}
         />
-        <Pressable
-          onPress={handleSubmit}
-          style={styles.confirmButton}
-        >
-          <Text>Entrar</Text>
-        </Pressable>
+        {
+          invalidAccess ? <Text style={styles.smallTextAlert}>email ou senha incorretos</Text> : null
+        }
+        <ConfirmButton label="entrar" onPress={validarCredenciais} />
       </View>
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   pageContainer: {
-    display: 'flex',
+    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    width: '100%',
-    height: '100%',
+    backgroundImage: 'url(https://cdn.pixabay.com/photo/2020/03/02/04/49/network-4894815_1280.jpg)',
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
   },
   loginContainer: {
-    backgroundColor: '#FFFFFF',
-    border: '1px solid #000000',
-    borderRadius: '15px',
-    boxShadow: '0px 4px 4px 0px rgba(0, 0, 0, 0.25)',
-    width: '340px',
-    display: 'flex',
+    backgroundColor: 'rgba(255,255,255, 0.25)',
+    borderWidth: 1,
+    borderColor: '#000000',
+    borderRadius: 15,
+    boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
+    width: '95%',
+    maxWidth: '600px',
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
-    paddingVertical: '15px',
-    paddingHorizontal: '50px',
+    paddingVertical: 15,
+    paddingHorizontal: 50,
   },
   imageContainer: {
     display: 'flex',
@@ -97,27 +84,19 @@ const styles = StyleSheet.create({
     borderRadius: '20px',
   },
   logoForm: {
-    width: '100%',    
+    width: '100%',
   },
   loginInput: {
     backgroundColor: '#D9D9D9',
-    height: '50px',
-    width: '200px',
-    borderRadius: '5px',
-    margin: '20px',
+    height: 50,
+    width: 200,
+    borderRadius: 5,
+    margin: 20,
+    padding: 10,
   },
-  confirmButton: {
-    backgroundColor: '#042CFE',
-    borderRadius: '5px',
-    boxShadow: '0px 4px 4px 0px rgba(0, 0, 0, 0.25)',
-    color: '#FFFFFF',
-    height: '50px',
-    width: '200px',
-    textTransform: 'uppercase',
-    fontWeight: 'bolder',
-    fontSize: '1.2rem',
-    textAlign: 'center',
-    paddingVertical: '12px',
-    paddingHorizontal: '60px',
+  smallTextAlert: {
+    color: 'red',
   },
 });
+
+export default LoginPage;
