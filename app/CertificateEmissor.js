@@ -1,11 +1,60 @@
-import { Text, View } from 'react-native';
+import { View, Image, StyleSheet } from "react-native";
+import certificateToolsCard from "../images/tools-icons/certificates-images/certificateCardsArray";
+import CardList from "../components/CardList";
+import ToolDescription from "../components/ToolDescription";
+import { useState } from "react";
 
-function CertificateEmissor() {
+const logo = require('../images/site-logo.png');
+
+export default function CertificateEmissor() {
+
+  const [showDescription, setShowDescription] = useState(false);
+  const [name, setName] = useState('');
+  const [description, setDescription] = useState('');
+  const [route, setRoute] = useState('');
+
   return (
-    <View>
-      <Text>Emissores de certificado</Text>
+    <View style={styles.pageContainer}>
+      <View style={styles.headerContainer}>
+        <Image source={logo} style={styles.logoHeader} />
+      </View>
+      <CardList
+        itemArrays={certificateToolsCard}
+        setName={setName}
+        setDescription={setDescription}
+        setRoute={setRoute}
+        setShowDescription={setShowDescription}
+      />
+      {
+        showDescription ? (
+          <ToolDescription name={name} description={description} route={route} />
+        ) : null
+      }
     </View>
   )
-}
+};
 
-export default CertificateEmissor
+const styles = StyleSheet.create({
+  pageContainer: {
+    flex: 1,
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    backgroundImage: 'url(https://cdn.pixabay.com/photo/2017/09/26/22/23/dark-green-2790337_1280.png)',
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    paddingBottom: '250px',
+  },
+  headerContainer: {
+    alignItems: 'center',
+    backgroundColor: '#58C047',
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    height: '160px',
+    width: '100%',
+  },
+  logoHeader: {
+    width: '100%',
+    maxWidth: '200px',
+  },
+})
