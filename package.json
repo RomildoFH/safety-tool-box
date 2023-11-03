@@ -29,7 +29,7 @@
   },
   "private": true,
   "overrides": {
-    "metro": "0.76.0",
-    "metro-resolver": "0.76.0"
+    "metro": "0.76.7",
+    "metro-resolver": "0.76.7"
   }
 }

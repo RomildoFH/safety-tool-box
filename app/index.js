@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundImage: 'url(https://cdn.pixabay.com/photo/2020/03/02/04/49/network-4894815_1280.jpg)',
+    backgroundImage: 'url(https://cdn.pixabay.com/photo/2017/09/26/22/23/dark-green-2790337_1280.png)',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
   },
@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
   imageContainer: {
     display: 'flex',
     justifyContent: 'center',
-    backgroundColor: '#5FBB34',
+    backgroundColor: '#58C047',
     height: '150px',
     width: '240px',
     paddingVertical: '35px',
