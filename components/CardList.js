@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'center',
-    marginVertical: '20px'
+    marginVertical: '20px',
   },
   cardContainer: {
     boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.7)',    

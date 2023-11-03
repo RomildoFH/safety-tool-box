@@ -1,12 +1,12 @@
 import { View, Image, StyleSheet } from "react-native";
-import toolsCardsArray from "../images/tools-icons/toolsCardsArray";
-import CardList from "../components/CardList";
-import ToolDescription from "../components/ToolDescription";
+import certificateToolsCard from "../../images/tools-icons/certificates-images/certificateCardsArray";
+import CardList from "../../components/CardList";
+import ToolDescription from "../../components/ToolDescription";
 import { useState } from "react";
 
-const logo = require('../images/site-logo.png');
+const logo = require('../../images/site-logo.png');
 
-export default function ToolBoxes() {
+export default function CertificateEmissor() {
 
   const [showDescription, setShowDescription] = useState(false);
   const [name, setName] = useState('');
@@ -19,7 +19,7 @@ export default function ToolBoxes() {
         <Image source={logo} style={styles.logoHeader} />
       </View>
       <CardList
-        itemArrays={toolsCardsArray}
+        itemArrays={certificateToolsCard}
         setName={setName}
         setDescription={setDescription}
         setRoute={setRoute}

@@ -1,12 +1,12 @@
-import { View, Image, StyleSheet } from "react-native";
-import certificateToolsCard from "../images/tools-icons/certificates-images/certificateCardsArray";
-import CardList from "../components/CardList";
-import ToolDescription from "../components/ToolDescription";
+import { View, Image, StyleSheet, Text } from "react-native";
+import toolsCardsArray from "../../images/tools-icons/toolsCardsArray";
+import CardList from "../../components/CardList";
+import ToolDescription from "../../components/ToolDescription";
 import { useState } from "react";
 
-const logo = require('../images/site-logo.png');
+const logo = require('../../images/site-logo.png');
 
-export default function CertificateEmissor() {
+export default function Home() {
 
   const [showDescription, setShowDescription] = useState(false);
   const [name, setName] = useState('');
@@ -19,7 +19,7 @@ export default function CertificateEmissor() {
         <Image source={logo} style={styles.logoHeader} />
       </View>
       <CardList
-        itemArrays={certificateToolsCard}
+        itemArrays={toolsCardsArray}
         setName={setName}
         setDescription={setDescription}
         setRoute={setRoute}
@@ -42,7 +42,8 @@ const styles = StyleSheet.create({
     backgroundImage: 'url(https://cdn.pixabay.com/photo/2017/09/26/22/23/dark-green-2790337_1280.png)',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
-    paddingBottom: '250px',
+    paddingBottom: '300px',
+    overflow: 'scroll',
   },
   headerContainer: {
     alignItems: 'center',
