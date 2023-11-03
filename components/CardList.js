@@ -9,16 +9,21 @@ export default function CardList({
 }) {
 
   const onPress = (item) => {
-    setName(item.name)
-    setDescription(item.description)
-    setRoute(item.route)
-    setShowDescription(true)
+    if (item.status) {
+      setName(item.name);
+      setDescription(item.description);
+      setRoute(item.route);
+      setShowDescription(true);
+    } else {
+      setShowDescription(false);
+      alert('Desculpe, ferramenta indispovível no momento');
+    }
   };
 
   const renderItem = (item, index) => (
     <Pressable
       key={index.toString()}
-      style={styles.cardContainer}
+      style={ item.status ? styles.cardContainer : [styles.cardContainer, {filter: 'brightness(70%)'}] }
       onPress={() => onPress(item)}
     >
       <Image source={{ uri: item.thumb }} style={styles.cardItem} />

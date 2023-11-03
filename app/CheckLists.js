@@ -1,8 +1,10 @@
-import { View } from 'react-native'
+import { Text, View } from 'react-native'
 
 function CheckLists() {
   return (
-    <View>CheckLists</View>
+    <View>
+      <Text>Check lists</Text>
+    </View>
   )
 }
 

@@ -1,8 +1,10 @@
-import { View } from 'react-native';
+import { Text, View } from 'react-native';
 
 function CertificateEmissor() {
   return (
-    <View>CertificateEmissor</View>
+    <View>
+      <Text>Emissores de certificado</Text>
+    </View>
   )
 }
 

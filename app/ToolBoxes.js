@@ -6,7 +6,7 @@ import { useState } from "react";
 
 const logo = require('../images/site-logo.png');
 
-export default function Tools() {
+export default function ToolBoxes() {
 
   const [showDescription, setShowDescription] = useState(false);
   const [name, setName] = useState('');
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     backgroundImage: 'url(https://cdn.pixabay.com/photo/2017/09/26/22/23/dark-green-2790337_1280.png)',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
-    marginBottom: '200px',
+    paddingBottom: '250px',
   },
   headerContainer: {
     alignItems: 'center',

@@ -13,7 +13,7 @@ const LoginPage = () => {
 
   async function validarCredenciais() {
     if (email === 'usuario@example.com' && password === 'senha123') {
-      navigation.navigate('Tools');
+      navigation.navigate('ToolBoxes');
     } else {
       console.log('Credenciais inválidas');
       setInvalidAccess(true);
