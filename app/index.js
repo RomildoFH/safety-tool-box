@@ -5,6 +5,7 @@ import Home from './screens/Home';
 import CertificateEmissor from './screens/CertificateEmissor';
 import LoginPage from './screens/LoginPage';
 import CheckLists from './screens/CheckLists';
+import IndividualCertificate from './screens/IndividualCertificate';
 
 const Stack = createNativeStackNavigator();
 
@@ -16,6 +17,7 @@ export default function App() {
          <Stack.Screen name="CheckLists" component={CheckLists} />
          <Stack.Screen name="LoginPage" component={LoginPage} />
         <Stack.Screen name="CertificateEmissor" component={CertificateEmissor} />
+        <Stack.Screen name="IndividualCertificate" component={IndividualCertificate} />
       </Stack.Navigator>
     </NavigationContainer>
   );

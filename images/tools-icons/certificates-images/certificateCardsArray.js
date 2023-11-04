@@ -4,7 +4,7 @@ const certificateToolsCard = [
     title: 'check lists',
     thumb: 'images/tools-icons/certificates-images/individual-certificate-card.png',
     status: true,
-    route: 'CertificateEmissor/Individual',
+    route: 'IndividualCertificate',
     description: 'Emissor de certificados de trinamentos de segurança do trabalho conforme NR 01 do '
   },
   {
