@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, StyleSheet, Pressable, Image } from 'react-native';
+import { View, Text, TextInput, StyleSheet, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import ConfirmButton from '../../components/ConfirmButton';
 
 const logo = require('../../images/site-logo.png');
+const background = require('../../images/dark-green-2790337_1280.png');
 
 const LoginPage = () => {
   const navigation = useNavigation();
@@ -22,29 +23,28 @@ const LoginPage = () => {
 
   return (
     <View style={styles.pageContainer}>
+      <Image source={background} style={styles.backgroundImage} />
       <View style={styles.loginContainer}>
         <View style={styles.imageContainer}>
           <Image source={logo} style={styles.logoForm} />
         </View>
         <TextInput
           name='email'
-          placeholder='email'
+          placeholder='Email'
           onChangeText={text => setEmail(text)}
           value={email}
           style={styles.loginInput}
         />
         <TextInput
           name='password'
-          placeholder='senha'
+          placeholder='Senha'
           secureTextEntry={true}
           onChangeText={text => setPassword(text)}
           value={password}
           style={styles.loginInput}
         />
-        {
-          invalidAccess ? <Text style={styles.smallTextAlert}>email ou senha incorretos</Text> : null
-        }
-        <ConfirmButton label="entrar" onPress={validarCredenciais} />
+        {invalidAccess && <Text style={styles.smallTextAlert}>Email ou senha incorretos</Text>}
+        <ConfirmButton label="Entrar" onPress={validarCredenciais} />
       </View>
     </View>
   );
@@ -55,18 +55,30 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundImage: 'url(https://cdn.pixabay.com/photo/2017/09/26/22/23/dark-green-2790337_1280.png)',
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
+    backgroundColor: '#279933',
+  },
+  backgroundImage: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '100%',
+    zIndex: -1,
   },
   loginContainer: {
-    backgroundColor: 'rgba(255,255,255, 0.25)',
+    backgroundColor: 'rgba(255, 255, 255, 0.25)',
     borderWidth: 1,
     borderColor: '#000000',
     borderRadius: 15,
-    boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 4,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
     width: '95%',
-    maxWidth: '600px',
+    maxWidth: 600,
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
@@ -74,14 +86,13 @@ const styles = StyleSheet.create({
     paddingHorizontal: 50,
   },
   imageContainer: {
-    display: 'flex',
     justifyContent: 'center',
     backgroundColor: '#58C047',
-    height: '150px',
-    width: '240px',
-    paddingVertical: '35px',
-    paddingHorizontal: '35px',
-    borderRadius: '20px',
+    height: 150,
+    width: 240,
+    paddingVertical: 35,
+    paddingHorizontal: 35,
+    borderRadius: 20,
   },
   logoForm: {
     width: '100%',

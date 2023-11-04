@@ -1,15 +1,12 @@
 import { StyleSheet, Text, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import ConfirmButton from './ConfirmButton';
 
-function ToolDescription({name, description, route}) {
+function CertificateView() {
   const navigation = useNavigation();
 
   return (
     <View style={styles.descriptionContainer}>
-      <Text style={styles.descriptionTitle}>{name.toUpperCase().replaceAll('-', ' ')}</Text>
-      <Text style={styles.descriptionText}>{description}</Text>
-      <ConfirmButton label="abrir" onPress={() => navigation.navigate(route)} />
+      <Text>Aqui estará o certificado</Text>
     </View>
   )
 };
@@ -21,7 +18,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'center',
     backgroundColor: '#fff',
-    // position: 'fixed',
+    position: 'fixed',
     bottom: 0,
     width: '100%',
     height: '250px',
@@ -41,4 +38,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ToolDescription;
+export default CertificateView;

@@ -1,4 +1,4 @@
-import { View, Image, StyleSheet, Text } from "react-native";
+import { View, Image, StyleSheet, Text, ScrollView } from "react-native";
 import toolsCardsArray from "../../images/tools-icons/toolsCardsArray";
 import CardList from "../../components/CardList";
 import ToolDescription from "../../components/ToolDescription";
@@ -14,7 +14,11 @@ export default function Home() {
   const [route, setRoute] = useState('');
 
   return (
-    <View style={styles.pageContainer}>
+    <ScrollView contentContainerStyle={styles.pageContainer}>
+      <Image
+        source={require('../../images/dark-green-2790337_1280.png')}
+        style={styles.backgroundImage}
+      />
       <View style={styles.headerContainer}>
         <Image source={logo} style={styles.logoHeader} />
       </View>
@@ -30,20 +34,24 @@ export default function Home() {
           <ToolDescription name={name} description={description} route={route} />
         ) : null
       }
-    </View>
+    </ScrollView>
   )
 };
 
 const styles = StyleSheet.create({
   pageContainer: {
-    flex: 1,
+    flexGrow: 1,
     justifyContent: 'flex-start',
     alignItems: 'center',
-    backgroundImage: 'url(https://cdn.pixabay.com/photo/2017/09/26/22/23/dark-green-2790337_1280.png)',
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-    paddingBottom: '300px',
-    overflow: 'scroll',
+    paddingBottom: 0,
+  },
+  backgroundImage: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '100%',
+    zIndex: -1,
   },
   headerContainer: {
     alignItems: 'center',
@@ -51,11 +59,11 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'center',
-    height: '160px',
+    height: 160,
     width: '100%',
   },
   logoHeader: {
     width: '100%',
-    maxWidth: '200px',
+    maxWidth: 200,
   },
 })

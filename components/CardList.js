@@ -1,4 +1,4 @@
-import { Image, Pressable, StyleSheet, View } from 'react-native';
+import { Image, Pressable, StyleSheet, Text, View } from 'react-native';
 
 export default function CardList({
   itemArrays,
@@ -47,16 +47,16 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'center',
-    marginVertical: '20px',
+    marginVertical: 20,
   },
   cardContainer: {
     boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.7)',    
-    height: '150px',
-    width: '150px',
-    margin: '7px',
+    height: 150,
+    width: 150,
+    margin: 7,
   },
   cardItem: {
-    height: '100%',
-    width: '100%',
+    height: 150,
+    width: 150,
   },
 });

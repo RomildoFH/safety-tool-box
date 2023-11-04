@@ -15,6 +15,10 @@ export default function CertificateEmissor() {
 
   return (
     <View style={styles.pageContainer}>
+      <Image
+        source={require('../../images/dark-green-2790337_1280.png')}
+        style={styles.backgroundImage}
+      />
       <View style={styles.headerContainer}>
         <Image source={logo} style={styles.logoHeader} />
       </View>
@@ -39,10 +43,18 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'flex-start',
     alignItems: 'center',
-    backgroundImage: 'url(https://cdn.pixabay.com/photo/2017/09/26/22/23/dark-green-2790337_1280.png)',
+    // backgroundImage: 'url(https://cdn.pixabay.com/photo/2017/09/26/22/23/dark-green-2790337_1280.png)',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     paddingBottom: '250px',
+  },
+  backgroundImage: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '100%',
+    zIndex: -1,
   },
   headerContainer: {
     alignItems: 'center',

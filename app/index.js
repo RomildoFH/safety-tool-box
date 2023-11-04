@@ -6,6 +6,7 @@ import CertificateEmissor from './screens/CertificateEmissor';
 import LoginPage from './screens/LoginPage';
 import CheckLists from './screens/CheckLists';
 import IndividualCertificate from './screens/IndividualCertificate';
+import CertificateView from './screens/CertificateView';
 
 const Stack = createNativeStackNavigator();
 
@@ -18,6 +19,7 @@ export default function App() {
          <Stack.Screen name="LoginPage" component={LoginPage} />
         <Stack.Screen name="CertificateEmissor" component={CertificateEmissor} />
         <Stack.Screen name="IndividualCertificate" component={IndividualCertificate} />
+        <Stack.Screen name="CertificateView" component={CertificateView} />
       </Stack.Navigator>
     </NavigationContainer>
   );
