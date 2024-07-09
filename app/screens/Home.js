@@ -31,7 +31,12 @@ export default function Home() {
       />
       {
         showDescription ? (
-          <ToolDescription name={name} description={description} route={route} />
+          <ToolDescription
+            name={name}
+            description={description}
+            route={route}
+            closeFunction={() => setShowDescription(false)}
+          />
         ) : null
       }
     </ScrollView>
@@ -44,6 +49,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     alignItems: 'center',
     paddingBottom: 0,
+    display: 'relative',
   },
   backgroundImage: {
     position: 'absolute',

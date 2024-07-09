@@ -23,19 +23,20 @@ export default function CardList({
   const renderItem = (item, index) => (
     <Pressable
       key={index.toString()}
-      style={ item.status ? styles.cardContainer : [styles.cardContainer, {filter: 'brightness(70%)'}] }
+      style={ item.status ? styles.cardContainer : [styles.cardContainer, {opacity: 0.4}] }
       onPress={() => onPress(item)}
     >
-      <Image source={{ uri: item.thumb }} style={styles.cardItem} />
+      <Image source={item.thumb} style={styles.cardItem} />
     </Pressable>
   );
 
   return (
     <View style={styles.listContainer}>
       {
-        itemArrays.map((item, index) => (
-          renderItem(item, index)
-        ))
+        itemArrays.map((item, index) => {
+          console.log(`item ${index}`,item)
+          return renderItem(item, index)
+        })
       }
     </View>
   )
@@ -54,6 +55,7 @@ const styles = StyleSheet.create({
     height: 150,
     width: 150,
     margin: 7,
+    backgroundColor: 'white'
   },
   cardItem: {
     height: 150,

@@ -12,6 +12,7 @@ export default function CertificateEmissor() {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [route, setRoute] = useState('');
+  const [modal, setModal] = useState(false);
 
   return (
     <View style={styles.pageContainer}>
@@ -31,7 +32,12 @@ export default function CertificateEmissor() {
       />
       {
         showDescription ? (
-          <ToolDescription name={name} description={description} route={route} />
+          <ToolDescription
+            name={name}
+            description={description}
+            route={route}
+            closeFunction={() => setShowDescription(false)}
+          />
         ) : null
       }
     </View>

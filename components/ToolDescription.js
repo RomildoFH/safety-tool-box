@@ -1,8 +1,8 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import ConfirmButton from './ConfirmButton';
 
-function ToolDescription({name, description, route}) {
+function ToolDescription({name, description, route, closeFunction}) {
   const navigation = useNavigation();
 
   return (
@@ -10,22 +10,24 @@ function ToolDescription({name, description, route}) {
       <Text style={styles.descriptionTitle}>{name.toUpperCase().replaceAll('-', ' ')}</Text>
       <Text style={styles.descriptionText}>{description}</Text>
       <ConfirmButton label="abrir" onPress={() => navigation.navigate(route)} />
+      <Pressable style={styles.closeBtn} onPress={() => closeFunction()}>        
+        <Text style={styles.closeButtonText}>x</Text>
+      </Pressable>
     </View>
   )
 };
 
 const styles = StyleSheet.create({
   descriptionContainer: {
-    display: 'flex',
-    justifyContent: 'space-around',
-    flexDirection: 'column',
+    display: 'relative',
     alignItems: 'center',
     backgroundColor: '#fff',
-    // position: 'fixed',
-    bottom: 0,
+    position: 'absolute',
+    top: 0,
+    // bottom: 0,
     width: '100%',
     height: '250px',
-    padding: '10px',
+    padding: 10,
     
   },
   descriptionTitle: {
@@ -37,7 +39,36 @@ const styles = StyleSheet.create({
     textAlign: 'justify',
     height: '50px',
     marginBottom: '50px',
-    width: '100%',
+    // marginLeft: 10,
+    // marginRight: 10,
+    // width: '95%',
+  },
+  closeBtn: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    position: 'absolute',
+    bottom: -30,
+    backgroundColor: '#fff',
+    width: 25,
+    height: 25,
+    padding: 1,
+    borderRadius: 12,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.3,
+    shadowRadius: 2.62,
+    elevation: 4,
+  },
+  closeButtonText: {
+    textAlign: 'center',
+    width: 20,
+    height: 20,
+    color: 'blue',
+    borderWidth: 1,
+    borderColor: 'blue',
+    borderStyle: 'solid',
+    borderRadius: 10
   },
 });
 
